@@ -1,7 +1,9 @@
 package org.example.model;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.example.enums.UserState;
 
@@ -11,9 +13,12 @@ import java.time.Instant;
 @Table(name = "users", schema = "public")
 @Getter
 @Setter
+@Builder
+@RequiredArgsConstructor
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "first_name", nullable = false)
